@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.PostgreSQLDialect
+		</property>
+
+		<property name="hibernate.connection.driver_class">
+			org.postgresql.Driver
+		</property>
+
+		<!-- Assume test is the database name -->
+		<!-- REPLACE LOCALHOST W REMOTE DB LATER -->
+		<property name="hibernate.connection.url">
+			jdbc:postgresql://localhost:5432/postgres
+		</property>
+
+		<property name="hibernate.connection.username">postgres</property>
+
+		<property name="hibernate.connection.password">POSTGRES</property>
+		<!-- what schema we work in -->
+		<property name="hibernate.default_schema">public</property>
+		<!-- CREATE will drop any existing tables and RECREATE our tables -->
+		<!-- create is not a good setting, VALIDATE is much better for projects IRL -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 3 other ones we could do here: -->
+		<!-- UPDATE: wouldn't delete anything, but would add tables or object -->
+		<!-- VALIDATE: best for production checks to make sure that everything 
+			in the DB is as expected -->
+		<!-- NONE: hibernate doens't alter your schema or do anything -->
+
+		
+		<!--this will show all of the SQL statemetns that hibernate is generating 
+			for us -->
+		<property name="hibernate.show_sql"> true </property>
+		<!-- LIST OF PERSISTENT CLASSES (PUT EM HERE!!!) -->
+		<mapping class="com.revature.models.Employee"/>
+
+
+	</session-factory>
+</hibernate-configuration>
