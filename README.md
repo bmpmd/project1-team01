@@ -1,6 +1,6 @@
 
 # Project-1: Employee Reimbursment System (ERS)
-* Team 01: Gavin Scindler & Leo Juarez  
+* Team 01: Gavin Schindler & Leo Juarez  
 *Due Tuesday July 5th 2022*
 
 ## Executive Summary
