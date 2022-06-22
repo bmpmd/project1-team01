@@ -12,20 +12,18 @@
 			org.postgresql.Driver
 		</property>
 
-		<!-- Assume test is the database name -->
-		<!-- REPLACE LOCALHOST W REMOTE DB LATER -->
 		<property name="hibernate.connection.url">
-			jdbc:postgresql://localhost:5432/postgres
+			jdbc:postgresql://team-1.cvtq9j4axrge.us-east-1.rds.amazonaws.com:5432/postgres
 		</property>
 
 		<property name="hibernate.connection.username">postgres</property>
 
-		<property name="hibernate.connection.password">POSTGRES</property>
+		<property name="hibernate.connection.password">postgres</property>
 		<!-- what schema we work in -->
-		<property name="hibernate.default_schema">public</property>
+		<property name="hibernate.default_schema">project01</property>
 		<!-- CREATE will drop any existing tables and RECREATE our tables -->
 		<!-- create is not a good setting, VALIDATE is much better for projects IRL -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- 3 other ones we could do here: -->
 		<!-- UPDATE: wouldn't delete anything, but would add tables or object -->
 		<!-- VALIDATE: best for production checks to make sure that everything 
