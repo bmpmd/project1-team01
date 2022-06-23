@@ -1,0 +1,17 @@
+body{
+    background-color: whitesmoke;
+    padding: 100px;
+}
+
+/*changing card elements */
+.card{
+
+    background-color:rgb(196, 232, 248)
+}
+
+/* forms and labels have this nice margin*/
+form, label{
+    margin: 10px;
+}
+
+

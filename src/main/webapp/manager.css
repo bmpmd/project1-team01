@@ -1,0 +1,15 @@
+body{
+    background-color: whitesmoke;
+    padding: 100px;
+}
+
+/*changing card  for manager elements */
+.card{
+
+    background-color:rgb(176, 243, 131)
+}
+
+/* forms and labels have this nice margin*/
+form, label{
+    margin: 10px;
+}

@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Team 1 App</title>
+	<meta charset="ISO-8859-1">
+	<title>Team 1 App</title>
+	<!-- bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<!-- link to css style sheet here-->
+	<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-	<h1>Welcome User!!</h1>
-	<h3>Please login below:</h3>
+	<!-- card here -->
+	<div class="container">
+		<div class="card">
+			<div class="shadow-lg">
+				<div class="card-header text-center">
+					<h1>Welcome!</h1>
+					<h3>Please login below:</h3>
+				</div>
+				<div class="card-body text-center">
 
-	<!-- post bc just querying. also get would show the parameters publicly
-	ie. google.com/search?q=puppies shows that u searched for puppies -->
-	<!-- POST requests hide the parameters. the parameters are in the body of the request
-	rather than in the URL -->
-	<form method="POST" action="login">
-		<!-- action bc http..../login  -->
-		<label>Username</label> 
-		<input type="text" name="username" placeholder="Enter a username..."><br /> 
-			
-		<!-- hovering over "text" shows us what other enums we could put 
-		can put password, which will  -->
-		
-		
-		<label>Password</label>
-		<input type="password" name="password" placeholder="Enter a password...">
-		<input type="submit" value="Login!">
-	</form>
-	<br />
+					<!-- post bc just querying. also get would show the parameters publicly
+					ie. google.com/search?q=puppies shows that u searched for puppies -->
+					<!-- POST requests hide the parameters. the parameters are in the body of the request
+					rather than in the URL -->
+					<form method="POST" action="login">
+						<!-- action bc http..../login  -->
+						<label>Username</label> 
+						<input type="text" name="username" placeholder="Enter a username..."><br /> 
+
+						<!-- hovering over "text" shows us what other enums we could put 
+						can put password, which will  -->
+						
+						
+						<label>Password</label>
+						<input type="password" name="password" placeholder="Enter a password..."><br />
+						<input type="submit" class="btn btn-outline-success" value="Log in!">
+						
+					</form>
+				
+				
+					<!-- button to user send to registration form -->
+					<br />
+					<label>Don't have an account?</label>
+					<form method="GET" action="registration.html">
+						<input type="submit" class="btn btn-outline-primary" value="Sign up!">
+					</form>
+					<!-- todo: other buttons for registering etc -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	
 	
-	<!-- todo: other buttons for registering etc -->
-	
-	
-	
+	<!-- bootstrap behavior scripts -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 	
 
 </body>
