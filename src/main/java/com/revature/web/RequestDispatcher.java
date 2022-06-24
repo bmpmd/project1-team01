@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDao;
 import com.revature.models.Employee;
 import com.revature.service.EmployeeService;
 
@@ -31,7 +32,7 @@ public class RequestDispatcher {
 			
 			session.setAttribute("user", e);
 			
-			// TODO: forward request to employee homepage
+			request.getRequestDispatcher("employee.html").forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html");

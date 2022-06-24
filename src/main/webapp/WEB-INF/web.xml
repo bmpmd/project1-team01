@@ -7,14 +7,23 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
-	
-	<!-- servlet here (front controller)-->
-	<!--  insert when the FrontController is established -->
-	
-	
-	<!-- then servlet-mapping here (FrontController,
-	 the servlet, points to different url patterns which we will go to )
-	 -->
-	
-	
+
+	<!-- servlet here (front controller) -->
+	<!-- insert when the FrontController is established -->
+	<servlet>
+		<description></description>
+		<display-name>FrontController</display-name>
+		<servlet-name>FrontController</servlet-name>
+		<servlet-class>com.revature.web.FrontController</servlet-class>
+	</servlet>
+
+	<!-- then servlet-mapping here (FrontController, the servlet, points to 
+		different url patterns which we will go to ) -->
+	<servlet-mapping>
+		<servlet-name>FrontController</servlet-name>
+		<url-pattern>/login</url-pattern>
+		<url-pattern>/employees</url-pattern>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+
 </web-app>

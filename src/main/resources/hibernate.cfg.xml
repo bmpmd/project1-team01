@@ -23,7 +23,7 @@
 		<property name="hibernate.default_schema">project01</property>
 		<!-- CREATE will drop any existing tables and RECREATE our tables -->
 		<!-- create is not a good setting, VALIDATE is much better for projects IRL -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- 3 other ones we could do here: -->
 		<!-- UPDATE: wouldn't delete anything, but would add tables or object -->
 		<!-- VALIDATE: best for production checks to make sure that everything 
@@ -36,6 +36,8 @@
 		<property name="hibernate.show_sql"> true </property>
 		<!-- LIST OF PERSISTENT CLASSES (PUT EM HERE!!!) -->
 		<mapping class="com.revature.models.Employee"/>
+		<mapping class="com.revature.models.Manager"/>
+		<mapping class="com.revature.models.Reimbursement"/>
 
 
 	</session-factory>

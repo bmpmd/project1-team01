@@ -41,10 +41,6 @@ public class Reimbursement {
 	@Column(name="description")
 	private String description;
 	
-	@Lob
-	@Column(name="receipt", columnDefinition="BLOB")
-	private byte[] receipt;
-	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="author")
 	private Employee author;
@@ -63,14 +59,13 @@ public class Reimbursement {
 		super();
 	}
 
-	public Reimbursement(double amount, Timestamp submitted, Timestamp resolved, String description, byte[] receipt,
+	public Reimbursement(double amount, Timestamp submitted, Timestamp resolved, String description,
 			Employee author, Manager resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
 		this.description = description;
-		this.receipt = receipt;
 		this.author = author;
 		this.resolver = resolver;
 		this.status = status;
@@ -78,14 +73,13 @@ public class Reimbursement {
 	}
 
 	public Reimbursement(int id, double amount, Timestamp submitted, Timestamp resolved, String description,
-			byte[] receipt, Employee author, Manager resolver, ReimbursementStatus status, ReimbursementType type) {
+			 Employee author, Manager resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
 		this.description = description;
-		this.receipt = receipt;
 		this.author = author;
 		this.resolver = resolver;
 		this.status = status;
@@ -132,14 +126,6 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public byte[] getReceipt() {
-		return receipt;
-	}
-
-	public void setReceipt(byte[] receipt) {
-		this.receipt = receipt;
-	}
-
 	public Employee getAuthor() {
 		return author;
 	}
@@ -176,7 +162,7 @@ public class Reimbursement {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(receipt);
+		result = prime * result;
 		result = prime * result
 				+ Objects.hash(amount, author, description, id, resolved, resolver, status, submitted, type);
 		return result;
@@ -193,7 +179,7 @@ public class Reimbursement {
 		Reimbursement other = (Reimbursement) obj;
 		return Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
 				&& Objects.equals(author, other.author) && Objects.equals(description, other.description)
-				&& id == other.id && Arrays.equals(receipt, other.receipt) && Objects.equals(resolved, other.resolved)
+				&& id == other.id && Objects.equals(resolved, other.resolved)
 				&& Objects.equals(resolver, other.resolver) && status == other.status
 				&& Objects.equals(submitted, other.submitted) && type == other.type;
 	}
@@ -201,7 +187,7 @@ public class Reimbursement {
 	@Override
 	public String toString() {
 		return "Reimbursement [id=" + id + ", amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
-				+ ", description=" + description + ", receipt=" + Arrays.toString(receipt) + ", author=" + author
+				+ ", description=" + description + ", author=" + author
 				+ ", resolver=" + resolver + ", status=" + status + ", type=" + type + "]";
 	}
 	
