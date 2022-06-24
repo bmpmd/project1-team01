@@ -10,22 +10,71 @@
 
 </head>
 <body>
-	<!-- card here -->
+	<h1 class="text-center">Employee home</h1>
+	<br/> 
+	<div id="divUser">
+		
+	</div>
+	<!-- reimbursements card -->
 	<div class="container">
+		
 		<div class="card">
 			<div class="shadow-lg">
+				
 				<div class="card-header text-center">
-					<h1>Welcome [insert name from user session]</h1>
-                    <h5>Employee Homepage</h5>
+					<h1>Reimbursements</h1>
+					
 				</div>
 				<div class="card-body text-center">
 
-					<label> Todo: what do we wanna do: link to other pages? </label>
-					<!-- todo: other buttons for registering etc -->
+					
+					<!-- this goes to the form page page -->
+					<form method="GET" action="form.html">
+						<input type="submit" class="btn btn-primary" value="Submit a reimbursement form">
+					</form>
+
+					<!-- when this pops up, handle "resimbursements" in front controller!-->
+					<!-- POST to hide params  -->
+					<form method="POST" action="reimbursements">
+						<input type="submit" class="btn btn-primary" value="View submitted reimbursements">
+					</form>
 				</div>
 			</div>
 		</div>
+
+		<!-- profile card -->
+		<br/>
+		<div class="card">
+			<div class="shadow-lg">
+				<div class="card-header text-center">
+					<h1>Profile</h1>
+                   
+				</div>
+				<div class="card-body text-center">
+
+					<!-- this goes to the form page-->
+					<form method="GET" action="form.html">
+						<input type="submit" class="btn btn-primary" value="View profile">
+					</form>
+
+					<!-- when this pops up, handle "reimbursements" in front controller!-->
+					<form method="GET" action="reimbursements">
+						<input type="submit" class="btn btn-primary" value="View submitted reimbursements">
+					</form>
+					<!-- toDO: REIMBURSEMENTS FORM-->
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="d-flex justify-content-center">
+			<form method="GET" action="index.html">
+				<input type="submit" class="btn btn-danger" value="Sign out">
+			</form>
+		</div>
+
 	</div>
+
+	
 
 
 	
