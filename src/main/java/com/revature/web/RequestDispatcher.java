@@ -32,7 +32,7 @@ public class RequestDispatcher {
 			
 			session.setAttribute("user", e);
 			
-			// TODO: forward request to employee homepage
+			request.getRequestDispatcher("employee.html").forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
