@@ -36,6 +36,8 @@
 		<property name="hibernate.show_sql"> true </property>
 		<!-- LIST OF PERSISTENT CLASSES (PUT EM HERE!!!) -->
 		<mapping class="com.revature.models.Employee"/>
+		<mapping class="com.revature.models.Manager"/>
+		<mapping class="com.revature.models.Reimbursement"/>
 
 
 	</session-factory>
