@@ -24,6 +24,9 @@
 		<url-pattern>/login</url-pattern>
 		<url-pattern>/employees</url-pattern>
 		<url-pattern>/register</url-pattern>
+		<url-pattern>/form</url-pattern>
+    	<url-pattern>/profile</url-pattern>
+    	<url-pattern>/reimbursements</url-pattern>
 	</servlet-mapping>
 
 </web-app>
