@@ -7,33 +7,34 @@
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <!-- link to css style sheet here-->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="employee.css">
 </head>
 <body>
 
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <form method="GET" action="employee.html">
+                <input type="submit" class="btn btn-secondary" value="Home">
+            </form>
+          </div>
+        </div>
+    </div>
+    <br/>
+   
 	<div class="container">
 		<div class="card">
 			<div class="shadow-lg">
 				<div class="card-header text-center">
-					<h1>Welcome new employee!</h1>
-					<h5>New employees please register below.</h5>				
+					<h1>Edit profile</h1>
+					<h5>Edit profile with new information below.</h5>				
 				</div>
 				<div class="card-body text-center">
 						
-					<!-- post bc just querying. also get would show the parameters publicly
-					ie. google.com/search?q=puppies shows that u searched for puppies -->
-					<!-- POST requests hide the parameters. the parameters are in the body of the request
-					rather than in the URL -->
-					<!-- ACTION takes you to that resource after button -->
-					
-					<!-- 
-						--webxml : program a /register url pattern to point to the Front controller in the servlet mapping tag 
-						- setup a case for a register url in the front controller
-						-- set up the actual functionality in the RequestHelper (that defines the functionality/what we do)
-								-> in the request helper, call the service layer to insert an employee objec
-									constructred from the parameters of the request 
-					 -->
-					<form method="POST" action="register">
+					<!-- url-pattern update /register to update profiles-->
+                    <!-- and names of forms are the same as registration-->
+                    
+					<form method="POST" action="update">
 					
 						<label>First Name</label> 
 						<input type="text" name="firstname" placeholder="Enter a first name..."><br /> 
@@ -51,10 +52,9 @@
 						<label>Password</label>
 						<input type="password" name="password" placeholder="Enter a password..."><br />
 						
-						<label>Email</label>
+                        <label>Email</label>
 						<input type="text" name="email" placeholder="Enter your email...">
-						
-						<br /><br ><input type="submit" value="Register!" class="btn btn-outline-success">
+						<br /><br ><input type="submit" value="Update profile!" class="btn btn-outline-success">
 					</form>
 					
 				</div>

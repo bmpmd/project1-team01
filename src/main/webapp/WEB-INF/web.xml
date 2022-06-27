@@ -21,9 +21,16 @@
 		different url patterns which we will go to ) -->
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
+		<!-- this should return a json str for dynamic web content-->
 		<url-pattern>/login</url-pattern>
+		<!-- this should return a json str for dynamic web content-->
 		<url-pattern>/employees</url-pattern>
 		<url-pattern>/register</url-pattern>
+		<url-pattern>/form</url-pattern>
+    	<url-pattern>/profile</url-pattern>
+		<!-- this should return a json str for dynamic web content-->
+    	<url-pattern>/reimbursements</url-pattern>
+		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
 
 </web-app>
