@@ -10,11 +10,26 @@
 
 </head>
 <body>
-	<h1 class="text-center">Employee home</h1>
+    <script type="text/javascript">
+        window.onload = function(){
+            //use this in a separate js file to load the table of reimbursements 
+            console.log("am i printing? if so i can fetch the table of reimbursements!!!")
+        }
+    </script>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <form method="GET" action="employee.html">
+                <input type="submit" class="btn btn-secondary" value="Home">
+            </form>
+          </div>
+        </div>
+    </div>
+    <br/>
+	<h1 class="text-center">Employee Reimbursements</h1>
 	<br/> 
-	<div id="divUser">
-		
-	</div>
+	
 	<!-- reimbursements card -->
 	<div class="container">
 		
@@ -25,44 +40,16 @@
 					<h1>Reimbursements</h1>
 					
 				</div>
+
 				<div class="card-body text-center">
-
-					
-					<!-- this goes to the form page -->
-					<form method="GET" action="form.html">
-						<input type="submit" class="btn btn-primary" value="Submit a reimbursement form">
-					</form>
-
-					<!-- when this pops up, handle "resimbursements" in front controller!-->
-					<!-- POST to hide params  -->
-					<form method="POST" action="reimbursements">
-						<input type="submit" class="btn btn-primary" value="View submitted reimbursements">
-					</form>
+					<h5>show reimbursements here using js </h5>
 				</div>
 			</div>
 		</div>
 
 		<!-- profile card -->
 		<br/>
-		<div class="card">
-			<div class="shadow-lg">
-				<div class="card-header text-center">
-					<h1>Profile</h1>
-                   
-				</div>
-				<div class="card-body text-center">
-
-					<!-- this goes to the profile page-->
-					<!-- profile.html page will be able to view/update info  -->
-					<!-- when this button is clicked, fetch profile info -->
-					<form method="GET" action="profile.html">
-						<input id="profile-info" type="submit" class="btn btn-primary" value="View profile">
-					</form>
-
-					
-					<!-- toDO: REIMBURSEMENTS FORM-->
-				</div>
-			</div>
+		
 		</div>
 		<br/>
 		<div class="d-flex justify-content-center">

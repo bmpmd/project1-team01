@@ -18,8 +18,9 @@
             </form>
           </div>
         </div>
-      </div>
-      <br/>
+    </div>
+    <br/>
+   
     
 	<div class="container">
 		<div class="card">
@@ -39,25 +40,21 @@
                     <!-- then persist the obj !-->
 					<form method="POST" action="form">
 					
-						<label>Amount</label><br/>
-                        <input type="number" name = "amount" id="replyNumber" min="0" data-bind="value:replyNumber" oninput="validity.valid||(value='');" /><br /> 
-
-                        <div class="form-group">
-                            <label for="sel1">Select type</label><br/>
-                            <select class="form-control-sm  text-center" id="sel1" name="type">
-                              <option>LODGING</option>
-                              <option>TRAVEL</option>
-                              <option>FOOD</option>
-                              <option>OTHER</option>
-                            </select>
-                        </div>
-
-                        <div class="from-group">
-                            <label for="desc-area">Description (optional)</label><br/>
-                            <textarea name = "description" placeholder="Enter a description..."class="form-control-sm" id="desc-area" rows="3"></textarea>
-                        </div>
-
-
+            <label>Amount</label><br/>
+            <input type="number" name = "amount" id="replyNumber" min="0" data-bind="value:replyNumber" oninput="validity.valid||(value='');" /><br /> 
+            <div class="form-group">
+                <label for="type">Select type</label><br/>
+                 <select class="form-control-sm  text-center" id="type" name="type">
+                  <option>LODGING</option>
+                  <option>TRAVEL</option>
+                   <option>FOOD</option>
+                   <option>OTHER</option>
+                 </select>
+             </div>
+            <div class="from-group">
+                 <label for="desc-area">Description (optional)</label><br/>
+                <textarea name = "description" placeholder="Enter a description..."class="form-control-sm" id="description" rows="3"></textarea>
+             </div>
 
 						<br /><br ><input type="submit" value="Submit Reimbursement!" class="btn btn-outline-primary">
 					</form>

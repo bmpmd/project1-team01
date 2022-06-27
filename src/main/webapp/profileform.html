@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- link to css style sheet here-->
+<link rel="stylesheet" href="employee.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <form method="GET" action="employee.html">
+                <input type="submit" class="btn btn-secondary" value="Home">
+            </form>
+          </div>
+        </div>
+    </div>
+    <br/>
+   
+	<div class="container">
+		<div class="card">
+			<div class="shadow-lg">
+				<div class="card-header text-center">
+					<h1>Edit profile</h1>
+					<h5>Edit profile with new information below.</h5>				
+				</div>
+				<div class="card-body text-center">
+						
+					<!-- url-pattern update /register to update profiles-->
+                    <!-- and names of forms are the same as registration-->
+                    
+					<form method="POST" action="update">
+					
+						<label>First Name</label> 
+						<input type="text" name="firstname" placeholder="Enter a first name..."><br /> 
+
+						<label>Last Name</label> 
+						<input type="text" name="lastname" placeholder="Enter a last name..."><br /> 
+
+						<!-- action bc http..../login  -->
+						<label>Username</label> 
+						<input type="text" name="username" placeholder="Enter a username..."><br /> 
+
+						<!-- hovering over "text" shows us what other enums we could put 
+						can put password, which will  -->
+						
+						<label>Password</label>
+						<input type="password" name="password" placeholder="Enter a password..."><br />
+						
+                        <label>Email</label>
+						<input type="text" name="email" placeholder="Enter your email...">
+						<br /><br ><input type="submit" value="Update profile!" class="btn btn-outline-success">
+					</form>
+					
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>
