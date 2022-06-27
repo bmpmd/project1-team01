@@ -41,4 +41,34 @@ public class RequestDispatcher {
 		}
 	}
 	
+	public static void processRegistration(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		// extract the parameters of the request
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		
+		// construct a new Employee
+		Employee e = new Employee(username, password, firstname, lastname, email, null);
+		
+		int pk = eserv.register(e);
+		
+		if (pk > 0) { // insertion was successful
+			e.setId(pk);
+			
+			// add the user to the session and automatically sign them in
+			HttpSession session = request.getSession();
+			session.setAttribute("user", e);
+			
+			request.getRequestDispatcher("employee.html").forward(request, response);
+		} else { // insertion failed
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+			
+			out.println("<h3>Registration failed.</h3>");
+			out.println("<a href=\"index.html\">Back</a>");
+		}
+	}
+	
 }

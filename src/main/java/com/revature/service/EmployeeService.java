@@ -34,4 +34,8 @@ public class EmployeeService {
 		return possibleEmp.isPresent() ? possibleEmp.get() : new Employee();
 	}
 	
+	public int register(Employee e) {
+		return edao.insert(e);
+	}
+	
 }
