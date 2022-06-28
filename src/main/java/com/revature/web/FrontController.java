@@ -25,6 +25,10 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.processRegistration(request, response);
 			
 			break;
+		case "form":
+			RequestDispatcher.processNewReimbursement(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;
