@@ -11,17 +11,21 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.EmployeeDao;
+import com.revature.dao.ManagerDao;
 import com.revature.dao.ReimbursementDao;
 import com.revature.models.Employee;
+import com.revature.models.Manager;
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
 import com.revature.models.ReimbursementType;
 import com.revature.service.EmployeeService;
+import com.revature.service.ManagerService;
 import com.revature.service.ReimbursementService;
 
 public class RequestDispatcher {
 
 	private static EmployeeService eserv = new EmployeeService(new EmployeeDao());
+	private static ManagerService mserv = new ManagerService(new ManagerDao());
 	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDao());
 	private static ObjectMapper om = new ObjectMapper();
 	
@@ -32,6 +36,7 @@ public class RequestDispatcher {
 		
 		// call confirmLogin() from the EmployeeSerivce and store the returned Employee
 		Employee e = eserv.confirmLogin(username, password);
+		Manager m = mserv.confirmLogin(username, password);
 		
 		// if the user exists, add them to the session
 		if (e.getId() > 0) {
@@ -40,6 +45,12 @@ public class RequestDispatcher {
 			session.setAttribute("user", e);
 			
 			request.getRequestDispatcher("employee.html").forward(request, response);
+		} else if (m.getId() > 0) {
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("user", m);
+			
+			request.getRequestDispatcher("manager.html").forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
