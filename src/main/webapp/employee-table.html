@@ -10,49 +10,39 @@
 
 </head>
 <body>
-	<h1 class="text-center">Manager Homepage</h1>
+    <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <form method="GET" action="manager.html">
+                <input type="submit" class="btn btn-secondary" value="Home">
+            </form>
+          </div>
+        </div>
+    </div>
+    <br/>
+	
 	<!-- card here -->
 	<div class="container">
 		<div class="card">
 			<div class="shadow-lg">
 				<div class="card-header text-center">
-                    <h1>Reimbursements</h1>
+                    <h1>List of Employees</h1>
+                    <h8>View all info about employees.</h8>
 				</div>
 				<div class="card-body text-center">
-
-					<form method="POST" action="reimbursements">
-						<input type="submit" class="btn btn-primary" value="Approve/deny pending reimbursements">
-					</form>
-
-					<form method="POST" action="reimbursements">
-						<input type="submit" class="btn btn-primary" value="View all resolved reimbursements">
-					</form>
+                    <!-- table here-->
+                    <h1> table here</h1>
 					
 				</div>
 			</div>
 		</div>
 
-		<br>
-		<div class="card">
-			<div class="shadow-lg">
-				<div class="card-header text-center">
-                    <h1>Employees</h1>
-				</div>
-				<div class="card-body text-center">
-
-					<!-- when this page is loaded it will fetch the json of emplkoyees in the employee table from /employees-->
-					<form method="GET" action="employee-table.html">
-						<input id="profile-info" type="submit" class="btn btn-primary" value="View all employees">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="d-flex justify-content-center">
-		<form method="GET" action="index.html">
-			<input type="submit" class="btn btn-danger" value="Sign out">
-		</form>
+		
+	    <div class="d-flex justify-content-center">
+		    <form method="GET" action="index.html">
+		    	<input type="submit" class="btn btn-danger" value="Sign out">
+		    </form>
+         </div>
 	</div>
 	
 	
