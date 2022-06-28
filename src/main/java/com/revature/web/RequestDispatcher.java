@@ -2,6 +2,7 @@ package com.revature.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,18 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.EmployeeDao;
+import com.revature.dao.ReimbursementDao;
 import com.revature.models.Employee;
+import com.revature.models.Reimbursement;
+import com.revature.models.ReimbursementStatus;
+import com.revature.models.ReimbursementType;
 import com.revature.service.EmployeeService;
+import com.revature.service.ReimbursementService;
 
 public class RequestDispatcher {
 
 	private static EmployeeService eserv = new EmployeeService(new EmployeeDao());
+	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDao());
 	private static ObjectMapper om = new ObjectMapper();
 	
 	public static void processLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,6 +75,32 @@ public class RequestDispatcher {
 			
 			out.println("<h3>Registration failed.</h3>");
 			out.println("<a href=\"index.html\">Back</a>");
+		}
+	}
+	
+	public static void processNewReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		double amount = Double.parseDouble(request.getParameter("amount"));
+		String type = request.getParameter("type");
+		String description = request.getParameter("description");
+		
+		Employee e = (Employee) request.getSession().getAttribute("user");
+		
+		Reimbursement r = new Reimbursement(amount, LocalDateTime.now(), null, description, e, 
+				null, ReimbursementStatus.PENDING, ReimbursementType.valueOf(type));
+		
+		int pk = rserv.insert(r);
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
+		if (pk > 0) { // insertion was successful
+			r.setId(pk);
+			
+			out.println("<h3>New Reimbursement Requested!</h3>");
+			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
+		} else { // insertion failed
+			out.println("<h3>Reimbursement Request Failed. Please try again.</h3>");
+			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
 		}
 	}
 	

@@ -1,7 +1,7 @@
 package com.revature.models;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,10 +32,10 @@ public class Reimbursement {
 	private double amount;
 	
 	@Column(name="submitted")
-	private Timestamp submitted;
+	private LocalDateTime submitted;
 	
 	@Column(name="resolved")
-	private Timestamp resolved;
+	private LocalDateTime resolved;
 	
 	@Column(name="description")
 	private String description;
@@ -59,7 +58,7 @@ public class Reimbursement {
 		super();
 	}
 
-	public Reimbursement(double amount, Timestamp submitted, Timestamp resolved, String description,
+	public Reimbursement(double amount, LocalDateTime submitted, LocalDateTime resolved, String description,
 			Employee author, Manager resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.amount = amount;
@@ -72,7 +71,7 @@ public class Reimbursement {
 		this.type = type;
 	}
 
-	public Reimbursement(int id, double amount, Timestamp submitted, Timestamp resolved, String description,
+	public Reimbursement(int id, double amount, LocalDateTime submitted, LocalDateTime resolved, String description,
 			 Employee author, Manager resolver, ReimbursementStatus status, ReimbursementType type) {
 		super();
 		this.id = id;
@@ -102,19 +101,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public Timestamp getSubmitted() {
+	public LocalDateTime getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(LocalDateTime submitted) {
 		this.submitted = submitted;
 	}
 
-	public Timestamp getResolved() {
+	public LocalDateTime getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(LocalDateTime resolved) {
 		this.resolved = resolved;
 	}
 
