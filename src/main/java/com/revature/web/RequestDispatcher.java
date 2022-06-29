@@ -3,6 +3,7 @@ package com.revature.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -113,6 +114,17 @@ public class RequestDispatcher {
 			out.println("<h3>Reimbursement Request Failed. Please try again.</h3>");
 			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
 		}
+	}
+	
+	public static void getEmployeeTable(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		
+		List<Employee> emps = eserv.getAll();
+		
+		String jsonString = om.writeValueAsString(emps);
+		
+		PrintWriter out = response.getWriter();
+		out.write(jsonString);
 	}
 	
 }
