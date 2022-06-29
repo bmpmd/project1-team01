@@ -33,6 +33,10 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.getEmployeeTable(request, response);
 			
 			break;
+		case "reimbursements":
+			RequestDispatcher.getPendingReimbursements(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;

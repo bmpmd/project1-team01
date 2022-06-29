@@ -127,4 +127,15 @@ public class RequestDispatcher {
 		out.write(jsonString);
 	}
 	
+	public static void getPendingReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		
+		List<Reimbursement> tickets = rserv.getAllPending();
+		
+		String jsonString = om.writeValueAsString(tickets);
+		
+		PrintWriter out = response.getWriter();
+		out.write(jsonString);
+	}
+	
 }
