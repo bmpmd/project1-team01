@@ -36,7 +36,7 @@ public class ReimbursementDao {
 		Session ses = HibernateUtil.getSession();
 		
 		// select all reimbursements where status = PENDING
-		List<Reimbursement> tickets = ses.createQuery("from Reimbursement R WHERE R.status = PENDING", Reimbursement.class).list();
+		List<Reimbursement> tickets = ses.createQuery("from Reimbursement R WHERE R.status = 'PENDING'", Reimbursement.class).list();
 		
 		return tickets;
 	}
