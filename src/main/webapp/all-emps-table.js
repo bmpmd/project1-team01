@@ -3,29 +3,9 @@
 //this js will show all reimbursements 
 //shows all data cols except author and resolver for now 
 
-let table  = document.querySelector('table');
+let table  = document.querySelector("table")
 //this save the table element to the variable 
 
-//when page  is loaded execute this anon function
-window.onload = function(){
-    console.log("fetching json for all employees....")
-
-    //fetch API is a modern interface that allows you 
-    // to make HTTP requests to a server 
-    // and process the resiults you get back asynchronously 
-
-    let hostname = window.location.hostname // tyhis will grab IP of where it's deployed (localhost, or Live server )
-    //this is the url that retrieves the employee list with a template literal
-    //EDIT: we must remove the portname because when it's deployed it wont need this bc port is already inferred when deploying
-    
-    //THIS IS THE LINE where we want to fetch the table. the end url will change depending on which 
-    fetch(`http://${hostname}/project01-team01/employees`) // TODO NAME FOR THIS EDIT THIS LINE FOR 
-    .then(response => response.json() ) // takes a json string 
-                                        //and trnasforms it to Javascript object
-    //.then(obj => console.log(obj));//then print       
-      .then(buildTable);//automatically passes the data that's been parsed (the js object)                         
-
-}
 
 function buildTable(data){
     //console log json str to make sure it's 
@@ -109,5 +89,25 @@ function buildTable(data){
 
 
 
+
+}
+
+
+//when page  is loaded execute this anon function
+window.onload = function(){
+    console.log("fetching json for all employees....")
+   // table.innerHTML = "edit table"
+    //fetch API is a modern interface that allows you 
+    // to make HTTP requests to a server 
+    // and process the resiults you get back asynchronously 
+
+    let hostname = window.location.host // tyhis will grab IP of where it's deployed (localhost, or Live server )
+    //this is the url that retrieves the employee list with a template literal
+    //EDIT: we must remove the portname because when it's deployed it wont need this bc port is already inferred when deploying
+    
+    //THIS IS THE LINE where we want to fetch the table. the end url will change depending on which 
+    fetch(`http://${hostname}/project1-team01/employees`) 
+    .then(response => response.json())                                      
+    .then(buildTable);//automatically passes the data that's been parsed (the js object)                         
 
 }
