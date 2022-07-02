@@ -30,6 +30,8 @@
 			in the DB is as expected -->
 		<!-- NONE: hibernate doens't alter your schema or do anything -->
 
+		<!-- This should speed up Hibernate significantly -->
+		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		
 		<!--this will show all of the SQL statemetns that hibernate is generating 
 			for us -->

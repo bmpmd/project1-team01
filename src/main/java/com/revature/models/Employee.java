@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="employees")
 public class Employee {
@@ -37,6 +39,7 @@ public class Employee {
 	@Column(name="email", unique=true, nullable=false)
 	private String email;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="author", fetch=FetchType.LAZY)
 	List<Reimbursement> reimbursementList = new ArrayList<>();
 
