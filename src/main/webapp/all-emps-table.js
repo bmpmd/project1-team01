@@ -87,8 +87,8 @@ function buildTable(data){
         //set inner html of eachc ell to the diff properties of a user (first name, last, user)
         //this is dependent on the json string's elements!! TODO HERE
         td1.innerHTML = element.id;
-        td2.innerHTML = element.first_name; 
-        td3.innerHTML = element.last_name;
+        td2.innerHTML = element.firstName; 
+        td3.innerHTML = element.lastName;
         td4.innerHTML = element.username;
         td5.innerHTML = element.email;
         
