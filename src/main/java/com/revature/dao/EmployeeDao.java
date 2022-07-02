@@ -51,7 +51,7 @@ public class EmployeeDao {
 		Session ses = HibernateUtil.getSession();
 		
 		//make an HQL statement 
-		List<Employee> employees = ses.createQuery("from Employee", Employee.class).list();//[SELECT] from [table, but object name].list() to ge tthe list 
+		List<Employee> employees = ses.createQuery("from Employee e", Employee.class).list(); 
 		
 		return employees; 
 	}

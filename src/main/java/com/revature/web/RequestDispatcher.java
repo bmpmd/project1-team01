@@ -3,6 +3,7 @@ package com.revature.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,17 +12,21 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.EmployeeDao;
+import com.revature.dao.ManagerDao;
 import com.revature.dao.ReimbursementDao;
 import com.revature.models.Employee;
+import com.revature.models.Manager;
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
 import com.revature.models.ReimbursementType;
 import com.revature.service.EmployeeService;
+import com.revature.service.ManagerService;
 import com.revature.service.ReimbursementService;
 
 public class RequestDispatcher {
 
 	private static EmployeeService eserv = new EmployeeService(new EmployeeDao());
+	private static ManagerService mserv = new ManagerService(new ManagerDao());
 	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDao());
 	private static ObjectMapper om = new ObjectMapper();
 	
@@ -32,6 +37,7 @@ public class RequestDispatcher {
 		
 		// call confirmLogin() from the EmployeeSerivce and store the returned Employee
 		Employee e = eserv.confirmLogin(username, password);
+		Manager m = mserv.confirmLogin(username, password);
 		
 		// if the user exists, add them to the session
 		if (e.getId() > 0) {
@@ -40,6 +46,12 @@ public class RequestDispatcher {
 			session.setAttribute("user", e);
 			
 			request.getRequestDispatcher("employee.html").forward(request, response);
+		} else if (m.getId() > 0) {
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("user", m);
+			
+			request.getRequestDispatcher("manager.html").forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
@@ -102,6 +114,28 @@ public class RequestDispatcher {
 			out.println("<h3>Reimbursement Request Failed. Please try again.</h3>");
 			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
 		}
+	}
+	
+	public static void getEmployeeTable(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		
+		List<Employee> emps = eserv.getAll();
+		
+		String jsonString = om.writeValueAsString(emps);
+		
+		PrintWriter out = response.getWriter();
+		out.write(jsonString);
+	}
+	
+	public static void getPendingReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		
+		List<Reimbursement> tickets = rserv.getAllPending();
+		
+		String jsonString = om.writeValueAsString(tickets);
+		
+		PrintWriter out = response.getWriter();
+		out.write(jsonString);
 	}
 	
 }

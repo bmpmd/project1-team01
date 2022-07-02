@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -26,6 +28,17 @@ public class ReimbursementDao {
 		tx.commit();
 		
 		return pk;
+	}
+	
+	// Read
+	public List<Reimbursement> findAllPending() {
+		// grab the session object from the utility class
+		Session ses = HibernateUtil.getSession();
+		
+		// select all reimbursements where status = PENDING
+		List<Reimbursement> tickets = ses.createQuery("from Reimbursement R WHERE R.status = 'PENDING'", Reimbursement.class).list();
+		
+		return tickets;
 	}
 	
 }

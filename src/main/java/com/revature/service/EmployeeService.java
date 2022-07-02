@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.revature.dao.EmployeeDao;
@@ -36,6 +37,10 @@ public class EmployeeService {
 	
 	public int register(Employee e) {
 		return edao.insert(e);
+	}
+	
+	public List<Employee> getAll() {
+		return edao.findAll();
 	}
 	
 }

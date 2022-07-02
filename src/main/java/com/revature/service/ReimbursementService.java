@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import com.revature.dao.ReimbursementDao;
 import com.revature.models.Reimbursement;
 
@@ -19,6 +21,10 @@ public class ReimbursementService {
 
 	public int insert(Reimbursement r) {
 		return rdao.insert(r);
+	}
+	
+	public List<Reimbursement> getAllPending() {
+		return rdao.findAllPending();
 	}
 	
 }
