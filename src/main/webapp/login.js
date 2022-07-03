@@ -4,17 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .addEventListener('click', signin);
 });
 
-const signin = (ev) =>{
+const signin = (ev) => {
     //stop page from reloading 
     ev.preventDefault();
 
-    let username = document.getElementById("username");
-    let password = document.getElementById("password")
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let hostname = window.location.host;
 
     console.log(username);
     console.log(password);
 
-    fetch('http://${hostname}/project01-team01/login-js', {
+    fetch(`http://${hostname}/project1-team01/login-js`, {
         //send this json to the api endpoint 
         //this endpoint has yet to be made, but will do confirm login 
 
@@ -31,8 +32,8 @@ const signin = (ev) =>{
 
     //then when we get the response back from the endpoint, we see if the response is ok 
     //if it's not ok,  say there's been an err        
-    }).then(function (response){
-
+    }).then(response => {
+		console.log(response);
 
         if(!response.ok){
             throw Error("ERROR has occured.")
@@ -43,8 +44,7 @@ const signin = (ev) =>{
 
         return response.json();
 
-
-    }).then(function(data){
+    }).then(data => {
         console.log(data);
         console.log(data.status);
 
