@@ -8,11 +8,13 @@ import org.hibernate.Transaction;
 import com.revature.models.Reimbursement;
 import com.revature.util.HibernateUtil;
 
-public class ReimbursementDao {
+public class ReimbursementDaoImpl implements IReimbursementDao {
 
-	// CRUD Methods
+	// C.R.U.D. Methods
 	
 	// Create
+	
+	@Override
 	public int insert(Reimbursement r) {
 		// grab session object
 		Session ses = HibernateUtil.getSession();
@@ -31,6 +33,8 @@ public class ReimbursementDao {
 	}
 	
 	// Read
+	
+	@Override
 	public List<Reimbursement> findAllPending() {
 		// grab the session object from the utility class
 		Session ses = HibernateUtil.getSession();

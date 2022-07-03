@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.dao.EmployeeDao;
-import com.revature.dao.ManagerDao;
-import com.revature.dao.ReimbursementDao;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.dao.ManagerDaoImpl;
+import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.models.Employee;
 import com.revature.models.Manager;
 import com.revature.models.Reimbursement;
@@ -25,9 +25,9 @@ import com.revature.service.ReimbursementService;
 
 public class RequestDispatcher {
 
-	private static EmployeeService eserv = new EmployeeService(new EmployeeDao());
-	private static ManagerService mserv = new ManagerService(new ManagerDao());
-	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDao());
+	private static EmployeeService eserv = new EmployeeService(new EmployeeDaoImpl());
+	private static ManagerService mserv = new ManagerService(new ManagerDaoImpl());
+	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDaoImpl());
 	private static ObjectMapper om = new ObjectMapper();
 	
 	public static void processLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -2,12 +2,12 @@ package com.revature.service;
 
 import java.util.Optional;
 
-import com.revature.dao.ManagerDao;
+import com.revature.dao.ManagerDaoImpl;
 import com.revature.models.Manager;
 
 public class ManagerService {
 
-	private ManagerDao mdao;
+	private ManagerDaoImpl mdao;
 	
 	/**
 	 * Constructor Injection
@@ -15,7 +15,7 @@ public class ManagerService {
 	 * A ManagerService object can never be instantiated without
 	 * having its ManagerDao dependency fulfilled
 	 */
-	public ManagerService(ManagerDao mdao) {
+	public ManagerService(ManagerDaoImpl mdao) {
 		this.mdao = mdao;
 	}
 	

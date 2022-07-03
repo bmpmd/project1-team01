@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.revature.dao.ReimbursementDao;
+import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.models.Employee;
 import com.revature.models.Manager;
 import com.revature.models.Reimbursement;
@@ -21,11 +21,11 @@ import com.revature.service.ReimbursementService;
 
 public class ReimbursementServiceTests {
 	private ReimbursementService rserv;
-	private ReimbursementDao mockdao;
+	private ReimbursementDaoImpl mockdao;
 
 	@Before
 	public void setup() {
-		mockdao = mock(ReimbursementDao.class);
+		mockdao = mock(ReimbursementDaoImpl.class);
 		rserv = new ReimbursementService(mockdao);
 	}
 

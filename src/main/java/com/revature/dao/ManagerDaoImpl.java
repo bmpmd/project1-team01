@@ -7,17 +7,16 @@ import org.hibernate.Session;
 import com.revature.models.Manager;
 import com.revature.util.HibernateUtil;
 
-public class ManagerDao {
+public class ManagerDaoImpl implements IManagerDao {
 
-	// CRUD Methods
+	// C.R.U.D. Methods
 	
 	// creating Managers is handled internally and thus is not a
 	// necessary to include here
 	
-	// READ
-	/**
-	 * @return List of all managers in the DB
-	 */
+	// Read
+
+	@Override
 	public List<Manager> findAll() {
 		Session ses = HibernateUtil.getSession();
 		
