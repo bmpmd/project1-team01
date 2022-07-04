@@ -13,12 +13,16 @@ public class FrontController extends HttpServlet {
 		// rewrite the URI to capture the relevant information
 		// http://localhost:8080/project1-team01/login -- capture "login"
 		final String URI = request.getRequestURI().replace("/project1-team01/", "");
-		
+
 		// set up a switch case statement to call the
 		// appropriate functionality based on the URI parsed above
 		switch (URI) {
 		case "login":
 			RequestDispatcher.processLogin(request, response);
+			
+			break;
+		case "login-js":
+			RequestDispatcher.processLoginJS(request, response);
 			
 			break;
 		case "register":

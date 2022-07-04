@@ -3,12 +3,12 @@ package com.revature.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.revature.dao.EmployeeDao;
+import com.revature.dao.EmployeeDaoImpl;
 import com.revature.models.Employee;
 
 public class EmployeeService {
 
-	private EmployeeDao edao;
+	private EmployeeDaoImpl edao;
 	
 	/**
 	 * Constructor Injection
@@ -16,7 +16,7 @@ public class EmployeeService {
 	 * An EmployeeService object can never be instantiated without
 	 * having its EmployeeDao dependency fulfilled
 	 */
-	public EmployeeService(EmployeeDao edao) {
+	public EmployeeService(EmployeeDaoImpl edao) {
 		this.edao = edao;
 	}
 	

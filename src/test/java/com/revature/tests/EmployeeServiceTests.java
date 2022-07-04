@@ -11,18 +11,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.revature.dao.EmployeeDao;
+import com.revature.dao.EmployeeDaoImpl;
 import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 import com.revature.service.EmployeeService;
 
 public class EmployeeServiceTests {
 	private EmployeeService eserv;
-	private EmployeeDao mockdao;
+	private EmployeeDaoImpl mockdao;
 
 	@Before
 	public void setup() {
-		mockdao = mock(EmployeeDao.class);
+		mockdao = mock(EmployeeDaoImpl.class);
 		eserv = new EmployeeService(mockdao);
 	}
 
