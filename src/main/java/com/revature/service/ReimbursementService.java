@@ -2,12 +2,12 @@ package com.revature.service;
 
 import java.util.List;
 
-import com.revature.dao.ReimbursementDao;
+import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.models.Reimbursement;
 
 public class ReimbursementService {
 	
-	private ReimbursementDao rdao;
+	private ReimbursementDaoImpl rdao;
 	
 	/**
 	 * Constructor Injection
@@ -15,7 +15,7 @@ public class ReimbursementService {
 	 * A ReimbursementService object can never be instantiated without
 	 * having its ReimbursementDao dependency fulfilled
 	 */
-	public ReimbursementService(ReimbursementDao rdao) {
+	public ReimbursementService(ReimbursementDaoImpl rdao) {
 		this.rdao = rdao;
 	}
 

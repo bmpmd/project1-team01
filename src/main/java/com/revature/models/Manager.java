@@ -149,4 +149,9 @@ public class Manager {
 				+ ", lastName=" + lastName + ", email=" + email + ", reimbursementList=" + reimbursementList + "]";
 	}
 	
+	public String toJson() {
+		return "{\"id\":" + id + ",\"username\":\"" + username + "\",\"pwd\":\"" + pwd + "\",\"firstName\":\""
+				+ firstName + "\",\"lastName\":\"" + lastName + "\",\"email\":\"" + email + "\",\"type\":\"manager\"}";
+	}
+	
 }

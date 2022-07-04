@@ -32,6 +32,7 @@
     	<url-pattern>/reimbursements</url-pattern>
 		<url-pattern>/update</url-pattern>
 		<url-pattern>/loginpage</url-pattern>
+		<url-pattern>/login-js</url-pattern>
 	</servlet-mapping>
 
 </web-app>

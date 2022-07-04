@@ -1,6 +1,8 @@
 package com.revature.web;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,9 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.dao.EmployeeDao;
-import com.revature.dao.ManagerDao;
-import com.revature.dao.ReimbursementDao;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.dao.ManagerDaoImpl;
+import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.models.Employee;
 import com.revature.models.Manager;
 import com.revature.models.Reimbursement;
@@ -25,9 +32,9 @@ import com.revature.service.ReimbursementService;
 
 public class RequestDispatcher {
 
-	private static EmployeeService eserv = new EmployeeService(new EmployeeDao());
-	private static ManagerService mserv = new ManagerService(new ManagerDao());
-	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDao());
+	private static EmployeeService eserv = new EmployeeService(new EmployeeDaoImpl());
+	private static ManagerService mserv = new ManagerService(new ManagerDaoImpl());
+	private static ReimbursementService rserv = new ReimbursementService(new ReimbursementDaoImpl());
 	private static ObjectMapper om = new ObjectMapper();
 	
 	public static void processLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,6 +64,63 @@ public class RequestDispatcher {
 			response.setContentType("text/html");
 			out.println("<h3>No user found.</h3>");
 			out.println("<a href=\"index.html\">Back</a>");
+		}
+	}
+	
+	public static void processLoginJS(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		// set the content type and header of the response
+		response.setContentType("application/json");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		PrintWriter out = response.getWriter();
+		
+		Gson gson = new Gson();
+		gson = new GsonBuilder().create();
+		JsonObject params = new JsonObject();
+		
+		// parse the JSOn string which is the body of the request
+		try {
+			JsonParser jsonParser = new JsonParser();
+			JsonElement root = jsonParser.parse(new InputStreamReader((InputStream) request.getInputStream()));
+			JsonObject jsonobj = root.getAsJsonObject();
+			
+			String username = jsonobj.get("username").getAsString();
+			String password = jsonobj.get("password").getAsString();
+			
+			// call confirmLogin() from the EmployeeSerivce and store the returned Employee
+			Employee e = eserv.confirmLogin(username, password);
+			Manager m = mserv.confirmLogin(username, password);
+			
+			if (e.getId() > 0) {
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("user", e);
+
+				String json = e.toJson();
+				
+				out.write(json);
+				
+				//request.getRequestDispatcher("employee.html").forward(request, response);
+			} else if (m.getId() > 0) {
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("user", m);
+
+				String json = m.toJson();
+				
+				out.write(json);
+				
+				//request.getRequestDispatcher("manager.html").forward(request, response);
+			} else {
+				params.addProperty("status", "process failed");
+				String json = gson.toJson(params);
+				out.write(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			params.addProperty("status", "process failed");
+			String json = gson.toJson(params);
+			out.write(json);
 		}
 	}
 	

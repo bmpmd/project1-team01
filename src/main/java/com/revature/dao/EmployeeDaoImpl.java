@@ -8,20 +8,13 @@ import org.hibernate.Transaction;
 import com.revature.models.Employee;
 import com.revature.util.HibernateUtil;
 
-public class EmployeeDao {
-
-
-	//no interfaces? 
+public class EmployeeDaoImpl implements IEmployeeDao {
 	
+	// C.R.U.D. Methods
+
+	// Create
 	
-	//crud methods 
-	//CREATE
-	//since we are implementing a registration for new employees, we create those 
-	/*
-	 * @param Employee object to be inserted into DB 
-	 * @return the primary key assigned by the DB to this Employee object
-	 * we insert into the DB 
-	 */
+	@Override
 	public int insert(Employee e) {
 		//session and transaction come from HIBERNATE
 		//grab session object 
@@ -36,18 +29,12 @@ public class EmployeeDao {
 		tx.commit();
 		
 		return pk;
-		
-		
 	}
 	
-	//READ
-	/*
-	 * @return List of all employees in the DB 
-	 */
+	// Read
+	
+	@Override
 	public List<Employee> findAll(){
-		//TODO: check if this method returns badly since typecasting back into java might return errors
-		//from the new SQL types we haven't been exposed to yet 
-		//grab sess
 		Session ses = HibernateUtil.getSession();
 		
 		//make an HQL statement 
@@ -56,16 +43,13 @@ public class EmployeeDao {
 		return employees; 
 	}
 	
+	// Update
 	
-	//UPDATE
+	@Override
 	public boolean update(Employee e) {
 		//TODO: implement this method 
 		return false;
 	}
 	
-	//DELETE
-	public boolean delete(int id) {
-		//TODO: complete this method 
-		return false; 
-	}
+	// Delete
 }
