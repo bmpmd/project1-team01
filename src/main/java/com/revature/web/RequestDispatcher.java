@@ -95,23 +95,22 @@ public class RequestDispatcher {
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("user", e);
-				params.addProperty("status", "login success");
-				params.addProperty("id", e.getId());
-				String json = gson.toJson(params);
-				System.out.println(json);
+
+				String json = e.toJson();
 				
 				out.write(json);
 				
-				request.getRequestDispatcher("employee.html").forward(request, response);
+				//request.getRequestDispatcher("employee.html").forward(request, response);
 			} else if (m.getId() > 0) {
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("user", m);
-				params.addProperty("status", "process success");
-				String json = gson.toJson(m);
+
+				String json = m.toJson();
+				
 				out.write(json);
 				
-				request.getRequestDispatcher("manager.html").forward(request, response);
+				//request.getRequestDispatcher("manager.html").forward(request, response);
 			} else {
 				params.addProperty("status", "process failed");
 				String json = gson.toJson(params);

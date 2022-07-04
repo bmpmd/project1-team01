@@ -33,8 +33,6 @@ const signin = (ev) => {
     //then when we get the response back from the endpoint, we see if the response is ok 
     //if it's not ok,  say there's been an err        
     }).then(response => {
-		console.log(response);
-
         if(!response.ok){
             throw Error("ERROR has occured.")
         }
@@ -64,8 +62,13 @@ const signin = (ev) => {
              */
             sessionStorage.setItem("currentUser", JSON.stringify(data));
 
-            //and finally, redirect to the page 
-            //window.location.href = 'http://localhost:8080/movie-app/index.html'
+            //and finally, redirect to the page
+            if (data.type === 'employee') {
+				window.location.href = `http://${hostname}/project1-team01/employee.html`;
+			} else if (data.type === 'manager') {
+				window.location.href = `http://${hostname}/project1-team01/manager.html`;
+			}
+            
         }else if(data.status == "process failed"){
             console.log('login failed...');
             let childDiv = document.getElementById("warningText");
