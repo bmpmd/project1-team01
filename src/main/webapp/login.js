@@ -61,6 +61,7 @@ const signin = (ev) => {
                 var obj = JSON.parse(sessionStorage.user);
              */
             sessionStorage.setItem("currentUser", JSON.stringify(data));
+            console.log(JSON.parse(sessionStorage.getItem('currentUser')).id);
 
             //and finally, redirect to the page
             if (data.type === 'employee') {

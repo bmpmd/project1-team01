@@ -44,5 +44,14 @@ public class ReimbursementDaoImpl implements IReimbursementDao {
 		
 		return tickets;
 	}
+
+	@Override
+	public List<Reimbursement> findByAuthorId(int id) {
+		Session ses = HibernateUtil.getSession();
+		
+		List<Reimbursement> tickets = ses.createQuery("from Reimbursement R WHERE R.author = " + id, Reimbursement.class).list();
+		
+		return tickets;
+	}
 	
 }

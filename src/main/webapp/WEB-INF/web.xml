@@ -33,6 +33,7 @@
 		<url-pattern>/update</url-pattern>
 		<url-pattern>/loginpage</url-pattern>
 		<url-pattern>/login-js</url-pattern>
+		<url-pattern>/reimbursements-id</url-pattern>
 	</servlet-mapping>
 
 </web-app>

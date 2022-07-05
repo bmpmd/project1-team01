@@ -128,7 +128,16 @@ window.onload = function(){
     //EDIT: we must remove the portname because when it's deployed it wont need this bc port is already inferred when deploying
     
     //THIS IS THE LINE where we want to fetch the table. the end url will change depending on which
-    fetch(`http://${hostname}/project1-team01/reimbursements`)
+    let id = JSON.parse(sessionStorage.getItem('currentUser')).id; 
+    fetch(`http://${hostname}/project1-team01/reimbursements-id`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id: id
+			})
+		})
     .then(response => response.json() ) // takes a json string 
                                         //and trnasforms it to Javascript object
     //.then(obj => console.log(obj));//then print       

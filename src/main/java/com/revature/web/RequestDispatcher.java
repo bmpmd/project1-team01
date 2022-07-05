@@ -202,4 +202,40 @@ public class RequestDispatcher {
 		out.write(jsonString);
 	}
 	
+	public static void getReimbursementsForId(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		PrintWriter out = response.getWriter();
+		
+		Gson gson = new Gson();
+		gson = new GsonBuilder().create();
+		JsonObject params = new JsonObject();
+		
+		// parse the JSOn string which is the body of the request
+		try {
+			JsonParser jsonParser = new JsonParser();
+			JsonElement root = jsonParser.parse(new InputStreamReader((InputStream) request.getInputStream()));
+			JsonObject jsonobj = root.getAsJsonObject();
+			
+			int id = jsonobj.get("id").getAsInt();
+			
+			List<Reimbursement> tickets = rserv.getAllByAuthorId(id);
+			
+			if (tickets != null) {
+				String json = om.writeValueAsString(tickets);
+				out.write(json);
+			} else {
+				params.addProperty("status", "process failed");
+				String json = gson.toJson(params);
+				out.write(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			params.addProperty("status", "process failed");
+			String json = gson.toJson(params);
+			out.write(json);
+		}
+	}
+	
 }
