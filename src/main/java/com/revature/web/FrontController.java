@@ -53,6 +53,10 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.denyReimbursement(request, response);
 			
 			break;
+		case "update":
+			RequestDispatcher.updateProfile(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;

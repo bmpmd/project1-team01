@@ -47,8 +47,19 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 	
 	@Override
 	public boolean update(Employee e) {
-		//TODO: implement this method 
-		return false;
+		Session ses = HibernateUtil.getSession();
+		
+		Transaction tx = ses.beginTransaction();
+		
+		try {
+			ses.update(e);
+		} catch (Exception exception) {
+			return false;
+		}
+		
+		tx.commit();
+		
+		return true;
 	}
 	
 	// Delete
