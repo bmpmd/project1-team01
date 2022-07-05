@@ -37,23 +37,23 @@
 					<form method="POST" action="update">
 					
 						<label>First Name</label> 
-						<input type="text" name="firstname" placeholder="Enter a first name..."><br /> 
+						<input type="text" name="firstname" id="firstname" placeholder="Enter a first name..."><br /> 
 
 						<label>Last Name</label> 
-						<input type="text" name="lastname" placeholder="Enter a last name..."><br /> 
+						<input type="text" name="lastname" id="lastname" placeholder="Enter a last name..."><br /> 
 
 						<!-- action bc http..../login  -->
 						<label>Username</label> 
-						<input type="text" name="username" placeholder="Enter a username..."><br /> 
+						<input type="text" name="username" id="username" placeholder="Enter a username..."><br /> 
 
 						<!-- hovering over "text" shows us what other enums we could put 
 						can put password, which will  -->
 						
 						<label>Password</label>
-						<input type="password" name="password" placeholder="Enter a password..."><br />
+						<input type="password" name="password" id="password" placeholder="Enter a password..."><br />
 						
                         <label>Email</label>
-						<input type="text" name="email" placeholder="Enter your email...">
+						<input type="text" name="email" id="email" placeholder="Enter your email...">
 						<br /><br ><input type="submit" value="Update profile!" class="btn btn-outline-success">
 					</form>
 					
@@ -69,5 +69,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
+	<!-- script to update fields -->
+	<script src="profileform-update.js" type="text/javascript" defer></script>
 </body>
 </html>
