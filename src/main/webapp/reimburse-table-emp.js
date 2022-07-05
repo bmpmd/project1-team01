@@ -23,8 +23,8 @@ function buildTable(data){
     table.appendChild(header);
 
     //col for making a selection 
-    let th0 = document.createElement("th");
-    th0.innerHTML = "Select"
+   // let th0 = document.createElement("th");
+   // th0.innerHTML = "Select"
     //create hearder col for each data column in db 
     //create a header column for ID
     let th1 = document.createElement('th')
@@ -52,7 +52,7 @@ function buildTable(data){
     th7.innerHTML = 'Type';
 
     //append the child nodes to the header 
-    headerRow.appendChild(th0);
+    //headerRow.appendChild(th0);
     headerRow.appendChild(th1);
     headerRow.appendChild(th2);
     headerRow.appendChild(th3);
@@ -66,7 +66,7 @@ function buildTable(data){
         console.log(element);
 
         let row = document.createElement('tr'); // tr = table row 
-        let td0 = document.createElement("td");//select 
+        //let td0 = document.createElement("td");//select 
         let td1 = document.createElement('td');//table data 1 
         let td2 = document.createElement('td');//table data 2
         let td3 = document.createElement('td');//table data 3 etc..
@@ -85,7 +85,7 @@ function buildTable(data){
         //set inner html of eachc ell to the diff properties of a user (first name, last, user)
         //this is dependent on the json string's elements!! TODO HERE
         row.id = element.id;
-        td0.innerHTML = `<input class="form-check-input" type="radio" name="select" id="${element.id}" value="${element.id}">`
+        //td0.innerHTML = `<input class="form-check-input" type="radio" name="select" id="${element.id}" value="${element.id}">`
         td1.innerHTML = element.id;
         td2.innerHTML = element.amount; 
         td3.innerHTML = element.description;
@@ -95,7 +95,7 @@ function buildTable(data){
         td7.innerHTML = element.type;
 
         //finally, append each table call to the row 
-        row.appendChild(td0);
+       // row.appendChild(td0);
         row.appendChild(td1);
         row.appendChild(td2);
         row.appendChild(td3);
