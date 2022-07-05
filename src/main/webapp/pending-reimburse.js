@@ -7,7 +7,6 @@ let table  = document.querySelector('table');
 //this save the table element to the variable 
 
 
-
 function buildTable(data){
     //console log json str to make sure it's 
     console.log('build table method has been triggered');
@@ -23,7 +22,6 @@ function buildTable(data){
     table.appendChild(header);
 
     //edit title 
-    document.getElementById("title").innerHTML = `Reimbursements of Employee with ID : ${sessionStorage.getItem("emp-id")}`
     //create hearder col for each data column in db 
     //create a header column for ID
     let th1 = document.createElement('th')
@@ -112,6 +110,10 @@ function buildTable(data){
 
 }
 
+
+
+
+
 //when page  is loaded execute this anon function
 window.onload = function(){
     console.log("fetching json of reimbursements for SELECTED employee ....")
@@ -125,16 +127,8 @@ window.onload = function(){
     //EDIT: we must remove the portname because when it's deployed it wont need this bc port is already inferred when deploying
     
     //THIS IS THE LINE where we want to fetch the table. the end url will change depending on which
-    let id = sessionStorage.getItem('emp-id'); 
-    fetch(`http://${hostname}/project1-team01/reimbursements-id`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				id: id
-			})
-		})
+    
+    fetch(`http://${hostname}/project1-team01/reimburse-resolved`)
     .then(response => response.json() ) // takes a json string 
                                         //and trnasforms it to Javascript object
     //.then(obj => console.log(obj));//then print       
