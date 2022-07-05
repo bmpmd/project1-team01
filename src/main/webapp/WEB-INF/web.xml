@@ -36,6 +36,7 @@
 		<url-pattern>/reimbursements-id</url-pattern>
 		<url-pattern>/approve-reimburse</url-pattern>
 		<url-pattern>/deny-reimburse</url-pattern>
+		<url-pattern>/reimburse-resolved</url-pattern>
 	</servlet-mapping>
 
 </web-app>

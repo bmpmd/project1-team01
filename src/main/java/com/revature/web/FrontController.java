@@ -57,6 +57,10 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.updateProfile(request, response);
 			
 			break;
+		case "reimburse-resolved":
+			RequestDispatcher.getResolvedReimbursements(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;

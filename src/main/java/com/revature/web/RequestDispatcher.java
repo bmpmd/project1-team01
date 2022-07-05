@@ -347,5 +347,17 @@ public class RequestDispatcher {
 
 		}
 	}
+	
+	public static void getResolvedReimbursements(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		response.setContentType("application/json");
+
+		List<Reimbursement> tickets = rserv.getAllResolved();
+
+		String jsonString = om.writeValueAsString(tickets);
+
+		PrintWriter out = response.getWriter();
+		out.write(jsonString);
+	}
 
 }
