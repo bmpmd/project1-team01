@@ -5,7 +5,7 @@
  */
 //get buttons + document elements 
 const viewButton = document.getElementById('view-button');
-
+let hostname = window.location.host;
 // function to get value of radio that is selected
 //value of radio is set to the id of reimbursement
 const getSelectedRadioHandler = () =>{
@@ -29,7 +29,9 @@ const getSelectedRadioHandler = () =>{
 //function to update reimbursement w/ status APPROVE to /accept
 const viewEmployee = (input) =>  {
     //isntead of alreting, we send it as a param? 
-    alert(`you have selected to VIEW the reimbursements of employee w/ ID =  ${input}`);
+    console.log(`you have selected to VIEW the reimbursements of employee w/ ID =  ${input}`);
+    sessionStorage.setItem("emp-id", `${input}`);
+    window.location.href = `http://${hostname}/project1-team01/select-table-page.html`
 }
 
 
