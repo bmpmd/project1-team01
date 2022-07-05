@@ -1,3 +1,12 @@
+//when the button is clicked, update user session 
+let btn = document.getElementById("btn")
+
+const updateUser = () =>{
+
+    //get 
+
+} 
+
 window.onload= function(){
 
     //when loaded populate fields 
@@ -10,3 +19,4 @@ window.onload= function(){
     document.getElementById("email").setAttribute("value", `${JSON.parse(sessionStorage.getItem("currentUser")).email}`)
 
 }
+

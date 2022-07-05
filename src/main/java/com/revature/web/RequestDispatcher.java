@@ -176,11 +176,9 @@ public class RequestDispatcher {
 		if (pk > 0) { // insertion was successful
 			r.setId(pk);
 
-			out.println("<h3>New Reimbursement Requested!</h3>");
-			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
+			request.getRequestDispatcher("success-page-emp.html").forward(request, response);
 		} else { // insertion failed
-			out.println("<h3>Reimbursement Request Failed. Please try again.</h3>");
-			out.println("<a href=\"employee.html\">Return to Employee Homepage</a>");
+			request.getRequestDispatcher("fail-page-emp.html").forward(request, response);
 		}
 	}
 
@@ -339,12 +337,14 @@ public class RequestDispatcher {
 		if (eserv.update(e)) {
 			session.setAttribute("user", e);
 			
-			request.getRequestDispatcher("employee.html").forward(request, response);
+			request.getRequestDispatcher("success-page-emp.html").forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html");
 			out.println("<h3>Update not successful.</h3>");
 			out.println("<a href=\"employee.html\">Employee Homepage</a>");
+			request.getRequestDispatcher("fail-page-emp.html").forward(request, response);
+
 		}
 	}
 
