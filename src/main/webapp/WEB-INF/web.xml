@@ -34,6 +34,8 @@
 		<url-pattern>/loginpage</url-pattern>
 		<url-pattern>/login-js</url-pattern>
 		<url-pattern>/reimbursements-id</url-pattern>
+		<url-pattern>/approve-reimburse</url-pattern>
+		<url-pattern>/deny-reimburse</url-pattern>
 	</servlet-mapping>
 
 </web-app>

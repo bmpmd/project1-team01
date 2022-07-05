@@ -238,4 +238,74 @@ public class RequestDispatcher {
 		}
 	}
 	
+	public static void approveReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		PrintWriter out = response.getWriter();
+		
+		Gson gson = new Gson();
+		gson = new GsonBuilder().create();
+		JsonObject params = new JsonObject();
+		
+		try {
+			JsonParser jsonParser = new JsonParser();
+			JsonElement root = jsonParser.parse(new InputStreamReader((InputStream) request.getInputStream()));
+			JsonObject jsonobj = root.getAsJsonObject();
+			
+			int managerId = jsonobj.get("id").getAsInt();
+			int reimbursementId = jsonobj.get("reimburseId").getAsInt();
+			
+			if (rserv.approve(managerId, reimbursementId)) {
+				params.addProperty("status", "process completed");
+				String json = gson.toJson(params);
+				out.write(json);
+			} else {
+				params.addProperty("status", "process failed");
+				String json = gson.toJson(params);
+				out.write(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			params.addProperty("status", "process failed");
+			String json = gson.toJson(params);
+			out.write(json);
+		}
+	}
+	
+	public static void denyReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("application/json");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		PrintWriter out = response.getWriter();
+		
+		Gson gson = new Gson();
+		gson = new GsonBuilder().create();
+		JsonObject params = new JsonObject();
+		
+		try {
+			JsonParser jsonParser = new JsonParser();
+			JsonElement root = jsonParser.parse(new InputStreamReader((InputStream) request.getInputStream()));
+			JsonObject jsonobj = root.getAsJsonObject();
+			
+			int managerId = jsonobj.get("id").getAsInt();
+			int reimbursementId = jsonobj.get("reimburseId").getAsInt();
+			
+			if (rserv.deny(managerId, reimbursementId)) {
+				params.addProperty("status", "process completed");
+				String json = gson.toJson(params);
+				out.write(json);
+			} else {
+				params.addProperty("status", "process failed");
+				String json = gson.toJson(params);
+				out.write(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			params.addProperty("status", "process failed");
+			String json = gson.toJson(params);
+			out.write(json);
+		}
+	}
+	
 }
