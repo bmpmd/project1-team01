@@ -22,9 +22,8 @@ function buildTable(data){
     //we need to append the header(which appended the header row) to the table  we created above 
     table.appendChild(header);
 
-    //col for making a selection 
-    let th0 = document.createElement("th");
-    th0.innerHTML = "Select"
+    //edit title 
+    document.getElementById("title").innerHTML = `Getting reimbursements of Employee with ID : ${sessionStorage.getItem("emp-id")}`
     //create hearder col for each data column in db 
     //create a header column for ID
     let th1 = document.createElement('th')
@@ -52,7 +51,7 @@ function buildTable(data){
     th7.innerHTML = 'Type';
 
     //append the child nodes to the header 
-    headerRow.appendChild(th0);
+   
     headerRow.appendChild(th1);
     headerRow.appendChild(th2);
     headerRow.appendChild(th3);
@@ -66,7 +65,7 @@ function buildTable(data){
         console.log(element);
 
         let row = document.createElement('tr'); // tr = table row 
-        let td0 = document.createElement("td");//select 
+        
         let td1 = document.createElement('td');//table data 1 
         let td2 = document.createElement('td');//table data 2
         let td3 = document.createElement('td');//table data 3 etc..
@@ -78,14 +77,12 @@ function buildTable(data){
         let year = element.submitted.year;
         let month = element.submitted.monthValue;
         let day = element.submitted.dayOfMonth;
-        let hr = element.submitted.hour;
-        let min = element.submitted.minute;
+     
         
         
         //set inner html of eachc ell to the diff properties of a user (first name, last, user)
         //this is dependent on the json string's elements!! TODO HERE
         row.id = element.id;
-        td0.innerHTML = `<input class="form-check-input" type="radio" name="select" id="${element.id}" value="${element.id}">`
         td1.innerHTML = element.id;
         td2.innerHTML = element.amount; 
         td3.innerHTML = element.description;
@@ -95,7 +92,7 @@ function buildTable(data){
         td7.innerHTML = element.type;
 
         //finally, append each table call to the row 
-        row.appendChild(td0);
+       
         row.appendChild(td1);
         row.appendChild(td2);
         row.appendChild(td3);
@@ -117,7 +114,7 @@ function buildTable(data){
 
 //when page  is loaded execute this anon function
 window.onload = function(){
-    console.log("fetching json of reimbursements for current employee ....")
+    console.log("fetching json of reimbursements for SELECTED employee ....")
 
     //fetch API is a modern interface that allows you 
     // to make HTTP requests to a server 
@@ -128,7 +125,7 @@ window.onload = function(){
     //EDIT: we must remove the portname because when it's deployed it wont need this bc port is already inferred when deploying
     
     //THIS IS THE LINE where we want to fetch the table. the end url will change depending on which
-    let id = JSON.parse(sessionStorage.getItem('currentUser')).id; 
+    let id = sessionStorage.getItem('emp-id'); 
     fetch(`http://${hostname}/project1-team01/reimbursements-id`, {
 			method: 'POST',
 			headers: {
