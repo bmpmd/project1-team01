@@ -45,6 +45,18 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.getReimbursementsForId(request, response);
 			
 			break;
+		case "approve-reimburse":
+			RequestDispatcher.approveReimbursement(request, response);
+			
+			break;
+		case "deny-reimburse":
+			RequestDispatcher.denyReimbursement(request, response);
+			
+			break;
+		case "update":
+			RequestDispatcher.updateProfile(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;

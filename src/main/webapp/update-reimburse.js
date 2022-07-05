@@ -34,8 +34,9 @@ const getSelectedRadioHandler = (input) => {
 const updateApprove = (input) => {
     //sending a json to the api endpoint 
     console.log(`you have APPROVED the reimbursement with ID = ${input}`);
-    let str = sessionStorage.getAttribute("currentUser");
-    let managerId = JSON.parse(str);
+    let str = sessionStorage.getItem("currentUser");
+    let managerId = JSON.parse(str).id;
+    let hostname = window.location.host;
 
     fetch(`http://${hostname}/project1-team01/approve-reimburse`, {
         //send this json to the api endpoint 
@@ -108,8 +109,8 @@ const updateDeny = (input) => {
     //isntead of alreting, we send it as a param? 
     console.log(`you have DENIED the reimbursement with ID = ${input}`);
     //sending a json to the api endpoint 
-    let str = sessionStorage.getAttribute("currentUser");
-    let managerId = JSON.parse(str);
+    let managerId = JSON.parse(sessionStorage.getItem('currentUser')).id;
+    let hostname = window.location.host;
 
     fetch(`http://${hostname}/project1-team01/deny-reimburse`, {
         //send this json to the api endpoint 

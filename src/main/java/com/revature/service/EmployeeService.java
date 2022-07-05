@@ -43,4 +43,8 @@ public class EmployeeService {
 		return edao.findAll();
 	}
 	
+	public boolean update(Employee e) {
+		return edao.update(e);
+	}
+	
 }

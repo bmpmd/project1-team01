@@ -31,4 +31,12 @@ public class ReimbursementService {
 		return rdao.findByAuthorId(id);
 	}
 	
+	public boolean approve(int managerId, int reimbursementId) {
+		return rdao.approve(managerId, reimbursementId);
+	}
+	
+	public boolean deny(int managerId, int reimbursementId) {
+		return rdao.deny(managerId, reimbursementId);
+	}
+	
 }

@@ -33,4 +33,21 @@ public interface IReimbursementDao {
 	 */
 	public List<Reimbursement> findByAuthorId(int id);
 	
+	// Update
+	
+	/**
+	 * Approve a reimbursement in the DB
+	 * @param managerId -- the id of the approving manager
+	 * @param reimbursementId -- the id of the reimbursement to be approved
+	 * @return -- true if successfully approved, false otherwise
+	 */
+	public boolean approve(int managerId, int reimbursementId);
+	/**
+	 * Deny a reimbursement in the DB
+	 * @param managerId -- the id of the denying manager
+	 * @param reimbursementId -- the id of the reimbursement to be denied
+	 * @return -- true if successfully denied, false otherwise
+	 */
+	public boolean deny(int managerId, int reimbursementId);
+	
 }
