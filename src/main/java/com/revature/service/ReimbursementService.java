@@ -39,4 +39,8 @@ public class ReimbursementService {
 		return rdao.deny(managerId, reimbursementId);
 	}
 	
+	public List<Reimbursement> getAllResolved() {
+		return rdao.findAllResolved();
+	}
+	
 }

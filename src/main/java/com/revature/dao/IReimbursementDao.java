@@ -32,6 +32,12 @@ public interface IReimbursementDao {
 	 * @return -- a list of all corresponding Reimbursements
 	 */
 	public List<Reimbursement> findByAuthorId(int id);
+	/**
+	 * Retrieve a list of all Reimbursements in the DB
+	 * with status = 'APPROVED' or status = 'DENIED'
+	 * @return -- a list of all resolved reimbursements
+	 */
+	public List<Reimbursement> findAllResolved();
 	
 	// Update
 	
