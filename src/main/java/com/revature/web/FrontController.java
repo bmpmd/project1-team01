@@ -41,6 +41,10 @@ public class FrontController extends HttpServlet {
 			RequestDispatcher.getPendingReimbursements(request, response);
 			
 			break;
+		case "reimbursements-id":
+			RequestDispatcher.getReimbursementsForId(request, response);
+			
+			break;
 		default:
 			// TODO: send to a custom error page
 			break;

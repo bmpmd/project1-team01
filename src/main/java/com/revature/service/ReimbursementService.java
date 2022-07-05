@@ -27,4 +27,8 @@ public class ReimbursementService {
 		return rdao.findAllPending();
 	}
 	
+	public List<Reimbursement> getAllByAuthorId(int id) {
+		return rdao.findByAuthorId(id);
+	}
+	
 }
